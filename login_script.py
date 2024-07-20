@@ -21,7 +21,7 @@ async def delay_time(ms):
 browser = None
 
 # telegram消息
-message = 'serv00保号脚本:\n'
+message = '【serv00】: \n'
 
 async def login(username, password, panel):
     global browser
@@ -68,7 +68,7 @@ async def login(username, password, panel):
 
 async def main():
     global message
-    message = 'serv00保号脚本:\n'
+    message = '【serv00】: \n'
     xuhao = 0;
     
     try:
@@ -91,18 +91,18 @@ async def main():
         if is_logged_in:
             now_utc = format_to_iso(datetime.utcnow())
             now_beijing = format_to_iso(datetime.utcnow() + timedelta(hours=8))
-            success_message = f'{xuhao}.账号[{username}]:登录成功\n-->>> {now_beijing}(UTC:{now_utc})'
+            success_message = f'{xuhao}.账号[{username}]: 登录成功\n>>> {now_beijing}(UTC:{now_utc})'
             message += success_message + '\n'
             print(success_message)
         else:
-            message += f'{xuhao}.账号[{username}]:登录失败\n-->>> 请检查账号和密码是否正确。\n'
-            print(f'{xuhao}.账号[{username}]:登录失败，请检查账号和密码是否正确。')
+            message += f'{xuhao}.[{username}]: 登录失败\n>>> 请检查账号和密码是否正确。\n'
+            print(f'{xuhao}.[{username}]: 登录失败\n>>> 请检查账号和密码是否正确。\n')
         delay = random.randint(1000, 8000)
         await delay_time(delay)
         
-    message += f'所有{serviceName}账号登录完成！'
+    message += f'\n>>> {serviceName}: 所有账号登录完成！'
     await send_telegram_message(message)
-    print(f'所有{serviceName}账号登录完成！')
+    print(f'\n>>> {serviceName}: 所有账号登录完成！')
 
 async def send_telegram_message(message):
     
@@ -114,7 +114,7 @@ async def send_telegram_message(message):
             'inline_keyboard': [
                 [
                     {
-                        'text': '问题反馈❓',
+                        'text': '技术交流',
                         'url': 'https://t.me/yxjsjl'
                     }
                 ]
