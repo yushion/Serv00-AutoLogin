@@ -85,9 +85,8 @@ async def main():
         is_logged_in = await login(username, password, panel)
 
         if is_logged_in:
-            now_utc = format_to_iso(datetime.utcnow())
             now_beijing = format_to_iso(datetime.utcnow() + timedelta(hours=8))
-            success_message = f'{xuhao}.{username}:  登录成功\n>>> {now_beijing}(UTC:{now_utc})\n\n'
+            success_message = f'{xuhao}.{username}:  登录成功\n>>> {now_beijing}\n\n'
             message += success_message
             print(success_message)
         else:
