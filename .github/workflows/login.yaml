@@ -3,10 +3,10 @@ name: Run Login Script
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 */7 * *"  # 每三天运行一次，可以根据需求调整时间
-  push:
-    branches:
-      - main
+    - cron: "0 0 */15 * *"  # 每三天运行一次，可以根据需求调整时间
+  #push:                    #main下任何文件更新就运行一次
+  #  branches:
+  #    - main
 jobs:
   login:
     runs-on: ubuntu-latest
