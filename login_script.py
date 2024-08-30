@@ -92,7 +92,7 @@ async def main():
         else:
             message += f'{xuhao}.{username}:  登录失败\n>>> 请检查账号和密码是否正确。\n\n'
             print(f'{xuhao}.[{username}]:  登录失败\n>>> 请检查账号和密码是否正确。\n\n')
-        delay = random.randint(1000, 8000)
+        delay = random.randint(10000, 20000)
         await delay_time(delay)
         
     message += f'{serviceName}:  所有账号登录完成！'
