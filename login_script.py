@@ -15,6 +15,7 @@ GITHUB_OWNER = os.getenv('GITHUB_OWNER')
 GITHUB_REPO = os.getenv('GITHUB_REPO')
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 GITHUB_RUN_ID = os.getenv('GITHUB_RUN_ID')
+
 def format_to_iso(date):
     return date.strftime('%Y-%m-%d %H:%M:%S')
 
