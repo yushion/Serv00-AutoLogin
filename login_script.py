@@ -11,6 +11,10 @@ import os
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
+GITHUB_OWNER = os.getenv('GITHUB_OWNER')
+GITHUB_REPO = os.getenv('GITHUB_REPO')
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+GITHUB_RUN_ID = os.getenv('GITHUB_RUN_ID')
 def format_to_iso(date):
     return date.strftime('%Y-%m-%d %H:%M:%S')
 
@@ -98,6 +102,8 @@ async def main():
     message += f'{serviceName}:  所有账号登录完成！'
     await send_telegram_message(message)
     print(f'\n{serviceName}:  所有账号登录完成！')
+    # 在所有操作完成后删除运行记录
+    await delete_github_run(GITHUB_RUN_ID)
 
 async def send_telegram_message(message):
     
@@ -126,5 +132,17 @@ async def send_telegram_message(message):
     except Exception as e:
         print(f"发送消息到Telegram时出错: {e}")
 
+async def delete_github_run(run_id):
+    url = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/actions/runs/{run_id}"
+    headers = {
+        'Authorization': f'token {GITHUB_TOKEN}',
+        'Accept': 'application/vnd.github.v3+json'
+    }
+    response = requests.delete(url, headers=headers)
+    if response.status_code == 204:
+        print("成功删除运行记录。")
+    else:
+        print(f"删除运行记录失败，状态码: {response.status_code}, 响应: {response.text}")
+        
 if __name__ == '__main__':
     asyncio.run(main())
