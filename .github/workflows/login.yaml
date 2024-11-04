@@ -36,9 +36,9 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ github.repository_owner }}
           GITHUB_REPO: ${{ github.event.repository.name }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub
           GITHUB_RUN_ID: ${{ github.run_id }}
         run: |
           python login_script.py
