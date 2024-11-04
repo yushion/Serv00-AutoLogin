@@ -109,7 +109,7 @@ async def send_telegram_message(message):
             'inline_keyboard': [
                 [
                     {
-                        'text': '技术交流',
+                        'text': '一休技术交流群',
                         'url': 'https://t.me/yxjsjl'
                     }
                 ]
